@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.epam.qa.reportportal'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Selenide
+    implementation 'com.codeborne:selenide:6.18.0'
+
+    implementation 'org.assertj:assertj-core:3.21.0'
+
+    // JBehave
+    implementation 'org.jbehave:jbehave-core:4.6.2'
+    implementation 'com.github.valfirst:jbehave-junit-runner:2.3.1'
+    implementation("org.jbehave:jbehave-spring:4.6.2") {
+        exclude group: 'org.springframework'
+    }
+    implementation("org.jbehave.site:jbehave-site-resources:3.3.1@zip")
+
+    // Selenium WebDriver
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+
+    implementation 'org.springframework:spring-test:5.3.31'
+    implementation 'org.springframework:spring-context:5.3.31'
+    implementation 'org.springframework:spring-beans:5.3.31'
+
+
+    implementation('com.epam.reportportal:agent-java-jbehave:5.1.0') {
+        exclude group: 'com.epam.reportportal', module: 'client-java'
+        exclude group: 'com.epam.reportportal', module: 'commons-model'
+        exclude group: 'org.jbehave', module: 'jbehave-core'
+    }
+    implementation("com.epam.reportportal:logger-java-logback:5.1.0") {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
+    implementation 'com.epam.reportportal:client-java:5.1.0'
+
+    // Webdriver manager
+    implementation("io.github.bonigarcia:webdrivermanager:5.8.0")
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
