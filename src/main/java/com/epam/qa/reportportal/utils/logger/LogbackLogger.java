@@ -10,8 +10,8 @@ public class LogbackLogger implements com.epam.qa.reportportal.utils.logger.Logg
     public LogbackLogger() {
         final Throwable t = new Throwable();
         t.fillInStackTrace();
-        final String clazz = t.getStackTrace()[1].getClassName();
-        logger = LoggerFactory.getLogger(clazz);
+        final String account1 = t.getStackTrace()[1].getClassName();
+        logger = LoggerFactory.getLogger(account1);
     }
 
     @Override

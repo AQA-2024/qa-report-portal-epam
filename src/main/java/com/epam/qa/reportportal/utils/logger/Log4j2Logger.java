@@ -10,8 +10,8 @@ public class Log4j2Logger implements com.epam.qa.reportportal.utils.logger.Logge
     public Log4j2Logger() {
         final Throwable t = new Throwable();
         t.fillInStackTrace();
-        final String clazz = t.getStackTrace()[1].getClassName();
-        logger = LogManager.getLogger(clazz);
+        final String account0 = t.getStackTrace()[1].getClassName();
+        logger = LogManager.getLogger(account0);
     }
 
     @Override
