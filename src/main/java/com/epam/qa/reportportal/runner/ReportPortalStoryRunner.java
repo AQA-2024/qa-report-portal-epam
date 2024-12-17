@@ -6,8 +6,8 @@ import com.epam.qa.reportportal.utils.ResourceUtils;
 import com.epam.qa.reportportal.utils.TestParameters;
 import com.epam.qa.reportportal.utils.logger.Logger;
 import com.epam.qa.reportportal.utils.logger.LoggerFactoryProvider;
+import com.epam.reportportal.jbehave.ReportPortalScenarioFormat;
 import com.epam.reportportal.jbehave.ReportPortalStepFormat;
-import com.github.valfirst.jbehave.junit.monitoring.JUnitReportingRunner;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jbehave.core.configuration.Configuration;
@@ -24,27 +24,26 @@ import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.ParameterControls;
 import org.jbehave.core.steps.ParameterConverters;
 import org.jbehave.core.steps.spring.SpringStepsFactory;
-import org.junit.Assert;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Request;
-import org.junit.runner.RunWith;
+import org.junit.platform.launcher.Launcher;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.launcher.core.LauncherFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestContextManager;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import static com.epam.qa.reportportal.utils.TestParameters.META_FILTERS;
 import static java.util.stream.Collectors.toList;
+import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
 
-@RunWith(JUnitReportingRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class ReportPortalStoryRunner extends JUnitStories {
 
@@ -73,9 +72,8 @@ public class ReportPortalStoryRunner extends JUnitStories {
         try {
             testContextManager.prepareTestInstance(this);
         } catch (Exception e) {
-            Assert.fail("Cannot init runner instance due to exception " + e);
+            throw new RuntimeException("Cannot init runner instance", e);
         }
-        JUnitReportingRunner.recommendedControls(configuredEmbedder());
     }
 
     @Override
@@ -90,13 +88,17 @@ public class ReportPortalStoryRunner extends JUnitStories {
      * @param args arguments.
      */
     public static void main(String[] args) {
-        Request request = Request.aClass(ReportPortalStoryRunner.class);
-        JUnitCore jUnitCore = new JUnitCore();
-        try {
-            jUnitCore.run(request);
-        } finally {
-            System.exit(0);
-        }
+        ReportPortalStoryRunner runner = new ReportPortalStoryRunner();
+        runner.runTestsWithJUnitPlatform();
+    }
+
+    private void runTestsWithJUnitPlatform() {
+        LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
+                .selectors(selectClass(ReportPortalStoryRunner.class))
+                .build();
+
+        Launcher launcher = LauncherFactory.create();
+        launcher.execute(request);
     }
 
 

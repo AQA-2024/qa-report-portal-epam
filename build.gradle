@@ -1,4 +1,5 @@
 plugins {
+    id 'org.springframework.boot' version '2.7.5'
     id 'java'
 }
 
@@ -11,8 +12,9 @@ repositories {
 
 dependencies {
     // Selenide
-    implementation 'com.codeborne:selenide:6.18.0'
+    implementation 'com.codeborne:selenide:6.19.1'
 
+    // Assertj
     implementation 'org.assertj:assertj-core:3.21.0'
 
     // JBehave
@@ -24,13 +26,15 @@ dependencies {
     implementation("org.jbehave.site:jbehave-site-resources:3.3.1@zip")
 
     // Selenium WebDriver
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.0'
 
+    // Spring
     implementation 'org.springframework:spring-test:5.3.31'
     implementation 'org.springframework:spring-context:5.3.31'
     implementation 'org.springframework:spring-beans:5.3.31'
 
 
+    // ReportPortal
     implementation('com.epam.reportportal:agent-java-jbehave:5.1.0') {
         exclude group: 'com.epam.reportportal', module: 'client-java'
         exclude group: 'com.epam.reportportal', module: 'commons-model'
@@ -41,12 +45,17 @@ dependencies {
     }
     implementation 'com.epam.reportportal:client-java:5.1.0'
 
-    // Webdriver manager
+    // Web driver manager
     implementation("io.github.bonigarcia:webdrivermanager:5.8.0")
 
+    // Logger
     implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
     implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
 
+    //JUnit
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+    implementation 'org.junit.platform:junit-platform-launcher:1.11.3'
 }
 
 test {
