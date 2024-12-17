@@ -1,0 +1,6 @@
+INDEX, LAUNCH_NUMBER, LAUNCH_NAME, COUNT_TOTAL, COUNT_PASSED, COUNT_FAILED, COUNT_SKIPPED
+1, #10, Demo Api Tests, 30, 30, EMPTY, EMPTY
+2, #9, Demo Api Tests, 25, 20, 5, EMPTY
+3, #8, Demo Api Tests, 20, 10, 8, 2
+4, #7, Demo Api Tests, 15, 5, 9, 1
+5, #6, Demo Api Tests, 10, 1, 9, EMPTY

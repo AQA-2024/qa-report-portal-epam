@@ -1,0 +1,6 @@
+INDEX, LAUNCH_NUMBER, LAUNCH_NAME, PLATFORM, BUILD
+1, #10, Demo Api Tests, macos, 3.11.14.32.51
+2, #9, Demo Api Tests, windows 10, 3.11.14.32.48
+3, #8, Demo Api Tests, windows mobile, 3.11.14.32.45
+4, #7, Demo Api Tests, ios, 3.11.14.32.41
+5, #6, Demo Api Tests, windows server, 3.11.14.32.39
