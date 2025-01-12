@@ -5,18 +5,21 @@ import org.aeonbits.owner.Config;
 @Config.Sources("classpath:env/prod/config.properties")
 public interface PropertiesConfig extends Config {
 
-    @Config.Key("user.login")
+    @Key("user.login")
     String login();
 
-    @Config.Key("user.password")
+    @Key("user.password")
     String password();
 
-    @Config.Key("report.portal.url")
+    @Key("report.portal.url")
     String url();
 
-    @Config.Key("report.portal.project.name")
+    @Key("report.portal.project.name")
     String projectName();
 
-    @Config.Key("report.portal.base.uri")
+    @Key("report.portal.base.uri")
     String baseUri();
+
+    @Key("report.portal.api.token")
+    String token();
 }

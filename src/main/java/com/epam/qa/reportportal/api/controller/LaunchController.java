@@ -21,6 +21,7 @@ public class LaunchController {
     private static final String PROJECT_NAME_PATH = "project_name";
 
     private static final String BASE_URI = config.baseUri();
+    private static final String TOKEN = "Bearer " + config.token();
     private static final String GET_LAUNCH_LIST_PATH = "/{project_name}/launch";
     private static final String GET_LAUNCH_PATH = "/{project_name}/launch/{id}";
     private static final String POST_LAUNCH_CLUSTER_PATH = "/{project_name}/launch/cluster";
@@ -28,7 +29,6 @@ public class LaunchController {
     private static final String UPDATE_LAUNCH_PATH = "/{project_name}/launch/{id}/update";
     private static final String FINISH_LAUNCH_PATH = "/{project_name}/launch/{id}/finish";
     private static final String DELETE_LAUNCH_PATH = "/{project_name}/launch";
-    private static final String TOKEN = "Bearer ApiTests_yNij4ZivSoWBVWRvMDCImag6e7QmbqT7X2nWiylpakFF4TNJ9FQXfNbhFM72mq2S";
 
     private RequestSpecification getRequestSpecification(String projectName) {
         return given()
