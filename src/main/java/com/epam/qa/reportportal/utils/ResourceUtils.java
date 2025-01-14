@@ -41,8 +41,9 @@ public class ResourceUtils {
             LOGGER.info(String.format("Successfully retrieved the base URL: %s", finalURL));
             return finalURL;
         } catch (Exception e) {
-            LOGGER.error(String.format("Failed to retrieve the resources URL %s", e));
+            LOGGER.error(String.format("Failed to retrieve the resources URL: %s", e.getMessage()));
             throw new RuntimeException("Resources not found", e);
         }
     }
+
 }

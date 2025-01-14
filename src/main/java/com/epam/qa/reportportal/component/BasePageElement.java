@@ -41,4 +41,12 @@ public abstract class BasePageElement {
     public SelenideElement shouldBe(Condition condition, Duration timeout) {
         return getElement().shouldBe(condition, timeout);
     }
+
+    /**
+     * Clicks on the button.
+     */
+    public void click() {
+        getElement().click();
+    }
+
 }

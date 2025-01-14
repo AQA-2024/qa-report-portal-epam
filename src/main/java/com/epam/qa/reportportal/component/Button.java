@@ -24,13 +24,6 @@ public class Button extends BasePageElement{
     }
 
     /**
-     * Clicks on the button.
-     */
-    public void click() {
-        getElement().click();
-    }
-
-    /**
      * Hover over the button.
      */
     public void hover() {
