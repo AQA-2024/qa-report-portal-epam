@@ -2,7 +2,6 @@ package com.epam.qa.reportportal.steps;
 
 import com.epam.qa.reportportal.pages.BasePage;
 import com.epam.qa.reportportal.pages.Sidebar;
-import com.epam.qa.reportportal.service.PropertiesService;
 import com.epam.qa.reportportal.utils.logger.Logger;
 import com.epam.qa.reportportal.utils.logger.LoggerFactoryProvider;
 import org.jbehave.core.annotations.When;
@@ -17,7 +16,6 @@ public class SidebarSteps {
 
     private final Sidebar sidebar = new Sidebar();
     private final BasePage basePage = new BasePage();
-    private final PropertiesService propertiesService = new PropertiesService();
 
     @When("user switches to the '$tab' tab")
     public void switchToTab(String tab) {
